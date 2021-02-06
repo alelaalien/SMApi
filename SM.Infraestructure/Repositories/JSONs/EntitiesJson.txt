@@ -1,0 +1,72 @@
+﻿
+
+********************************************SUBJET
+{
+  "notes": "notes",
+  "active": 0,
+  "idUser": 1,
+  "class": "class",
+  "queryClasses": "qclass"
+}
+********************************************EVENT
+{
+  "idSubjet": 1,
+  "date": "2021-01-01T00:00:00",
+  "typeOf": 0,
+  "idTeacher": 1,
+  "title": "text",
+  "notes": "text",
+  "priority": 0,
+  "active": 0
+}
+********************************************tEACHER
+{
+  "name": "name",
+  "surname": "sn",
+  "nick": "nick",
+  "subjets": "",
+  "celephone": "2222",
+  "email": "email",
+  "notes": "notes"
+}
+********************************************uSER
+{
+  "id": 0,
+  "nick": null,
+  "email": null,
+  "img": null
+}
+
+*******************************************security
+post
+ 1.{
+	"user": "admin",
+	"userName": "ale",
+	"pass":"adminale",
+	"role":"Administrator"
+}
+2.{
+	"user": "user",
+	"userName": "user",
+	"pass":"user",
+	"role":"Consumer"
+}
+
+response
+1.{
+    "data": {
+        "user": "admin",
+        "userName": "ale",
+        "pass": "10000.VhrcjqydMPar0EM3h1kqVw==.w8+M3Ym7AtUm46o3/tVpYGX6jlYuJPJV+/HYn0+XdIU=",
+        "role": 0
+    }
+}
+2.{
+    "data": {
+        "user": "user",
+        "userName": "user",
+        "pass": "10000.cskJ5tiHOasWJo5IfzIeOQ==.t0q9fEMkNltHY5r6JFSlbbzb+yh5OeHdf0k4TLLJq4o=",
+  
+        "role": 1
+    }
+}
