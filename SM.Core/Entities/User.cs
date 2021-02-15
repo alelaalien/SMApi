@@ -7,14 +7,17 @@ namespace SM.Core.Entities
         public User()
         {
             Subjet = new HashSet<Subjet>();
+            Teacher = new HashSet<Teacher>();
+            Event = new HashSet<Event>();
         }
 
 
         public string Nick { get; set; }
         public string Email { get; set; }
-        public string Img { get; set; }
         public string Password { get; set; }
 
         public virtual ICollection<Subjet> Subjet { get; set; }
+        public virtual ICollection<Teacher> Teacher { get; set; }
+        public virtual ICollection<Event> Event { get; set; }
     }
 }

@@ -12,5 +12,6 @@ namespace SM.Core.Interfaces
         Task NewEvent(Event _event);
         Task<bool> Update(Event _event);
         Task<bool> Delete(int id);
+        Task<bool> DeleteAll(int id);
     }
 }

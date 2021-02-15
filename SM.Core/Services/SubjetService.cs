@@ -26,6 +26,22 @@ namespace SM.Core.Services
             return true;
         }
 
+        public async Task<bool> DeleteAll(SubjetQueryFilters filters)
+        {
+            var subjets = _subR.SubjetRepository.GetAll();
+
+            if (filters.IdUser != null) {
+            
+                
+                subjets = subjets.Where(x => x.IdUser == filters.IdUser); 
+          
+            await _subR.SubjetRepository.DeleteAll(subjets);
+              
+            }  await _subR.SaveChangesAsync();
+            return true;
+
+        }
+
         public async Task<Subjet> GetSubjet(int id)
         {
             return await _subR.SubjetRepository.GetById(id);

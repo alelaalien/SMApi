@@ -32,8 +32,7 @@ namespace SM.Infraestructure.Repositories
         }
         public async Task<bool> Update(Teacher _teacher)
         {
-            var currTeacher = await GetTeacher(_teacher.Id);
-            currTeacher.Notes = _teacher.Notes;
+            var currTeacher = await GetTeacher(_teacher.Id); 
             currTeacher.Name = _teacher.Name;
             currTeacher.Nick = _teacher.Nick;
             currTeacher.Surname = _teacher.Surname;

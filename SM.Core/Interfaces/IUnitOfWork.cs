@@ -11,6 +11,7 @@ namespace SM.Core.Interfaces
         IRepository<Teacher> TeacherRepository { get; }
         IRepository<Subjet> SubjetRepository { get; }
         ISecurityRepository SecurityRepository { get; }
+        IUserRepository UserRepositoryLogin { get; }
         void SaveChanges();
         Task SaveChangesAsync();
 

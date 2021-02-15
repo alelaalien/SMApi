@@ -11,6 +11,7 @@ namespace SM.Core.Interfaces
         IEnumerable<T> GetAll();
         void Update(T t);
         Task Delete(int id);
+        Task DeleteAll(IEnumerable<T> a);
         Task Add(T t);
 
     }

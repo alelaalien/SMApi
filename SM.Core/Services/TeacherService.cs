@@ -31,7 +31,7 @@ namespace SM.Core.Services
         public  IEnumerable<Teacher>  GetTeachers(TeacherQueryFilters filters)
         {
             var teachers= _teachR.TeacherRepository.GetAll();
- 
+            if (filters.IdUser != null) { teachers = teachers.Where(x => x.IdUser == filters.IdUser); }
             if (filters.Id != null) { teachers = teachers.Where(x => x.Id == filters.Id); }
             if (filters.Name != null) { teachers = teachers.Where(x => x.Name.ToLower() == filters.Name.ToLower()); }
             if (filters.Surname != null) { teachers = teachers.Where(x => x.Surname.ToLower() == filters.Surname.ToLower()); }
@@ -53,6 +53,22 @@ namespace SM.Core.Services
              _teachR.TeacherRepository.Update(_teacher);
             await _teachR.SaveChangesAsync();
             return true;
+        }
+        public async Task<bool> DeleteAll(TeacherQueryFilters filters)
+        {
+            var teachers = _teachR.SubjetRepository.GetAll();
+
+            if (filters.IdUser != null)
+            {
+
+                teachers = teachers.Where(x => x.IdUser == filters.IdUser);
+
+                await _teachR.SubjetRepository.DeleteAll(teachers);
+
+            }
+            await _teachR.SaveChangesAsync();
+            return true;
+
         }
     }
 }

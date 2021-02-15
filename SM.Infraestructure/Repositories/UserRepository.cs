@@ -34,8 +34,7 @@ namespace SM.Infraestructure.Repositories
         {
             var currUser = await GetUser(_user.Id);
             currUser.Nick = _user.Nick;
-            currUser.Email = _user.Email;
-            currUser.Img = _user.Img;
+            currUser.Email = _user.Email; 
 
             int rows = await _context.SaveChangesAsync();
             return rows > 0;
@@ -49,5 +48,8 @@ namespace SM.Infraestructure.Repositories
 
         }
 
+        public async Task<User> GetLoginByCredentials(CommonLogin user)
+        {
+             return await _context.User.FirstOrDefaultAsync(x => x.Email == user.Email);       }
     }
 }

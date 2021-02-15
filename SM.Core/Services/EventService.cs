@@ -37,7 +37,7 @@ namespace SM.Core.Services
             if(filters.Id!= null) { events = events.Where(x => x.Id == filters.Id); }
             if (filters.IdSubjet != null) { events = events.Where(x => x.IdSubjet == filters.IdSubjet); }
             if (filters.Date != null) { events = events.Where(x => x.Date.ToShortDateString() == filters.Date?.ToShortDateString()); }
-            if (filters.IdTeacher != null) { events = events.Where(x => x.IdTeacher == filters.IdTeacher); }
+            if (filters.IdUser != null) { events = events.Where(x => x.IdUser == filters.IdUser); }
             if (filters.Title != null) { events = events.Where(x => x.Title.ToLower() == filters.Title.ToLower()); }
             if (filters.TypeOf != null) { events = events.Where(x => x.TypeOf == filters.TypeOf); }
             if (filters.Active != null) { events = events.Where(x => x.Active == filters.Active); }
@@ -51,16 +51,16 @@ namespace SM.Core.Services
         {
 
             var subjet = await _eveR.SubjetRepository.GetById(_event.IdSubjet);
-            var teacher = await _eveR.TeacherRepository.GetById(_event.IdTeacher);
+            var user = await _eveR.UserRepository.GetById(_event.IdUser);
             if (subjet == null)
             {
 
                 throw new Exception("La materia no existe");
             }
-            if (teacher == null)
+            if (user == null)
             {
 
-                throw new Exception("El docente no existe");
+                throw new Exception("El usuario no existe");
             }
             var date = _event.Date;
             if (date < DateTime.Now)
@@ -85,6 +85,23 @@ namespace SM.Core.Services
             _eveR.EventRepository.Update(_event);
           await  _eveR.SaveChangesAsync();
             return true;
+        }
+        public async Task<bool> DeleteAll(EventQueryFilters filters)
+        {
+            var events = _eveR.EventRepository.GetAll();
+
+            if (filters.IdUser != null)
+            {
+
+
+                events = events.Where(x => x.IdUser == filters.IdUser);
+
+                await _eveR.EventRepository.DeleteAll(events);
+
+            }
+            await _eveR.SaveChangesAsync();
+            return true;
+
         }
     }
 }

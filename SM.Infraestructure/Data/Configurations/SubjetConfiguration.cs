@@ -26,15 +26,7 @@ namespace SM.Infraestructure.Data.Configurations
 
             builder.Property(e => e.IdUser).HasColumnName("idUser");
 
-            builder.Property(e => e.Notes)
-                .IsRequired()
-                .HasColumnName("notes")
-                .HasColumnType("text");
-
-            builder.Property(e => e.QueryClasses)
-                .IsRequired()
-                .HasColumnName("queryClasses")
-                .HasColumnType("text");
+ 
 
             builder.HasOne(d => d.IdUserNavigation)
                 .WithMany(p => p.Subjet)

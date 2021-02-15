@@ -15,23 +15,16 @@ namespace SM.Infraestructure.Data.Configurations
 
             builder.Property(e => e.Email)
                 .IsRequired()
-                .HasColumnName("email")
-                .HasColumnType("text");
-
-            builder.Property(e => e.Img)
-                .IsRequired()
-                .HasColumnName("img")
-                .HasColumnType("text");
+                .HasColumnName("email");
+ 
 
             builder.Property(e => e.Nick)
                 .IsRequired()
-                .HasColumnName("nick")
-                .HasColumnType("text");
+                .HasColumnName("nick");
 
             builder.Property(e => e.Password)
                 .IsRequired()
                 .HasColumnName("password")
-                .HasMaxLength(15)
                 .IsUnicode(false);
 
         }

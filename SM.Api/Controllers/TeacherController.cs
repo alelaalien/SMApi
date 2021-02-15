@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace SM.Api.Controllers
 {
-    [Authorize]
+  //  [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TeacherController : ControllerBase
@@ -34,7 +34,7 @@ namespace SM.Api.Controllers
             var teacher =   _teacher.GetTeachers(filters);
             var teacherDto = _mapper.Map<IEnumerable<TeacherDto>>(teacher);
             var response = new ApiResponse<IEnumerable<TeacherDto>>(teacherDto);
-            return Ok(response);
+            return Ok(teacherDto);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTeacher(int id)
@@ -69,6 +69,15 @@ namespace SM.Api.Controllers
         {
 
             var result = await _teacher.Delete(id);
+            var response = new ApiResponse<bool>(result);
+            return Ok(response);
+        }
+        [Route("deleteall/")]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteAll([FromQuery] TeacherQueryFilters filters)
+        {
+
+            var result = await _teacher.DeleteAll(filters);
             var response = new ApiResponse<bool>(result);
             return Ok(response);
         }

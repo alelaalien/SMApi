@@ -44,5 +44,12 @@ namespace SM.Infraestructure.Repositories
             _entities.Update(t);
 
         }
+ 
+
+        public async Task DeleteAll(IEnumerable<T> a)
+        {
+
+               _entities.RemoveRange(a); 
+        }
     }
 }

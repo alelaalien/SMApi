@@ -20,7 +20,7 @@ namespace SM.Infraestructure.Data.Configurations
 
             builder.Property(e => e.IdSubjet).HasColumnName("idSubjet");
 
-            builder.Property(e => e.IdTeacher).HasColumnName("idTeacher");
+            builder.Property(e => e.IdUser).HasColumnName("idUser");
 
             builder.Property(e => e.Notes)
                 .IsRequired()
@@ -42,11 +42,11 @@ namespace SM.Infraestructure.Data.Configurations
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Event_Subjet");
 
-            builder.HasOne(d => d.IdTeacherNavigation)
+            builder.HasOne(d => d.IdUserNavigation)
                 .WithMany(p => p.Event)
-                .HasForeignKey(d => d.IdTeacher)
+                .HasForeignKey(d => d.IdUser)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Event_Teacher");
+                .HasConstraintName("FK_Event_User");
      
         }
     }

@@ -10,12 +10,11 @@ namespace SM.Core.Entities
         }
 
  
-        public string Notes { get; set; }
         public string Name { get; set; }
         public int Active { get; set; }
         public int IdUser { get; set; }
         public string Class { get; set; }
-        public string QueryClasses { get; set; }
+  
 
         public virtual User IdUserNavigation { get; set; }
         public virtual ICollection<Event> Event { get; set; }

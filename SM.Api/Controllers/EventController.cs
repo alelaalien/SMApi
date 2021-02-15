@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace SM.Api.Controllers
 {
-[Authorize]
+//[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class EventController : ControllerBase
@@ -32,7 +32,7 @@ namespace SM.Api.Controllers
             var events =  _event.GetEvents(filters);
             var eventsDto = _mapper.Map<IEnumerable<EventDto>>(events);
             var response = new ApiResponse<IEnumerable<EventDto>>(eventsDto);
-            return Ok(response);
+            return Ok(eventsDto);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEvent(int id)
@@ -69,6 +69,15 @@ namespace SM.Api.Controllers
         {
 
             var result = await _event.Delete(id);
+            var response = new ApiResponse<bool>(result);
+            return Ok(response);
+        }
+        [Route("deleteall/")]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteAll([FromQuery] EventQueryFilters filters)
+        {
+
+            var result = await _event.DeleteAll(filters);
             var response = new ApiResponse<bool>(result);
             return Ok(response);
         }

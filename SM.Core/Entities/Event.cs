@@ -8,13 +8,14 @@ namespace SM.Core.Entities
         public int IdSubjet { get; set; }
         public DateTime Date { get; set; }
         public int TypeOf { get; set; }
-        public int IdTeacher { get; set; }
+        public int IdUser { get; set; }
         public string Title { get; set; }
         public string Notes { get; set; }
         public int Priority { get; set; }
         public int Active { get; set; }
 
         public virtual Subjet IdSubjetNavigation { get; set; }
-        public virtual Teacher IdTeacherNavigation { get; set; }
+        public virtual User IdUserNavigation { get; set; }
+
     }
 }

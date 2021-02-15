@@ -10,9 +10,11 @@ namespace SM.Core.Services
     public class UserService:IUserService
     {
         private readonly IUnitOfWork _userR;
-        public UserService(IUnitOfWork userRepository)
+       
+        public UserService(IUnitOfWork userRepository )
         {
             _userR = userRepository;
+           
         }
 
         public async Task<bool> Delete(int id)
@@ -49,6 +51,10 @@ namespace SM.Core.Services
              _userR.UserRepository.Update(user);
             await _userR.SaveChangesAsync();
             return true;
+        }
+        public async Task<User> GetLoginByCredentials(CommonLogin login)
+        {
+            return await  _userR.UserRepositoryLogin.GetLoginByCredentials(login);
         }
     }
 }

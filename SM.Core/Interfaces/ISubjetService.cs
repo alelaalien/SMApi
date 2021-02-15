@@ -12,5 +12,6 @@ namespace SM.Core.Interfaces
         Task NewSubjet(Subjet subjet);
         Task<bool> Update(Subjet subjet);
         Task<bool> Delete(int id);
+        Task<bool> DeleteAll(SubjetQueryFilters filters);
     }
 }

@@ -12,5 +12,7 @@ namespace SM.Core.Interfaces
         Task NewUser(User user);
         Task<bool> Update(User user);
         Task<bool> Delete(int id);
+        Task<User> GetLoginByCredentials(CommonLogin login);
+
     }
 }

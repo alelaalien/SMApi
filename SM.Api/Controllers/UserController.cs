@@ -1,28 +1,29 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SM.Api.Response;
 using SM.Core.DTOs;
 using SM.Core.Entities;
 using SM.Core.Interfaces;
 using SM.Core.QueryFilters;
+using SM.Infraestructure.Interfaces;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-
 namespace SM.Api.Controllers
 {
-//// [Authorize]
+    //// [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
         private readonly IUserService _user;
         private readonly IMapper _mapper;
-        public UserController(IUserService user, IMapper mapper)
+        private readonly IPasswordHasher _hasher;
+        public UserController(IUserService user, IMapper mapper, IPasswordHasher hasher)
         {
             _user = user;
             _mapper = mapper;
+            _hasher = hasher;
         }
         /// <summary>
         /// Retrieve all Users
@@ -37,7 +38,7 @@ namespace SM.Api.Controllers
             var user =   _user.GetUsers(filters);
             var userDto = _mapper.Map<IEnumerable<UserDto>>(user);
             var response = new ApiResponse<IEnumerable<UserDto>>(userDto);
-            return Ok(response);
+            return Ok(userDto);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id)
@@ -51,8 +52,9 @@ namespace SM.Api.Controllers
         public async Task<IActionResult> NewUser(UserDto userDto)
         {
             var user = _mapper.Map<User>(userDto);
+            user.Password = _hasher.Hash(user.Password);
             await _user.NewUser(user);
-
+           
             userDto = _mapper.Map<UserDto>(user);
             var response = new ApiResponse<UserDto>(userDto);
             return Ok(response);
@@ -75,5 +77,9 @@ namespace SM.Api.Controllers
             var response = new ApiResponse<bool>(result);
             return Ok(response);
         }
+
+
+
+
     }
 }

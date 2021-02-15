@@ -33,11 +33,7 @@ namespace SM.Infraestructure.Data.Configurations
                 .IsRequired()
                 .HasColumnName("nick")
                 .HasColumnType("text");
-
-            builder.Property(e => e.Notes)
-                .IsRequired()
-                .HasColumnName("notes")
-                .HasColumnType("text");
+ 
 
             builder.Property(e => e.Subjets)
                 .IsRequired()
@@ -48,6 +44,17 @@ namespace SM.Infraestructure.Data.Configurations
                 .IsRequired()
                 .HasColumnName("surname")
                 .HasColumnType("text");
+
+            builder.Property(e => e.IdUser).HasColumnName("idUser")
+                .HasColumnType("int"); ;
+
+            builder.HasOne(d => d.IdUserNavigation)
+                .WithMany(p => p.Teacher)
+                .HasForeignKey(d => d.IdUser)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Teacher_User");
+
+
         }
     }
 }

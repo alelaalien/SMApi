@@ -11,5 +11,6 @@ namespace SM.Core.Interfaces
         Task NewTeacher(Teacher _teacher);
         Task<bool> Update(Teacher _teacher);
         Task<bool> Delete(int id);
+        Task<bool> DeleteAll(int id);
     }
 }
