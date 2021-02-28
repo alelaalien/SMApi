@@ -14,9 +14,9 @@ namespace SM.Infraestructure.Data.Configurations
                 .HasColumnName("Id")
                 .HasColumnType("int");
 
-            builder.Property(e => e.Celephone)
+            builder.Property(e => e.Celphone)
                 .IsRequired()
-                .HasColumnName("celephone")
+                .HasColumnName("celphone")
                 .HasColumnType("int");
 
             builder.Property(e => e.Email)
@@ -35,10 +35,10 @@ namespace SM.Infraestructure.Data.Configurations
                 .HasColumnType("text");
  
 
-            builder.Property(e => e.Subjets)
+            builder.Property(e => e.Subjet)
                 .IsRequired()
-                .HasColumnName("subjets")
-                .HasColumnType("text");
+                .HasColumnName("subjet")
+                .HasColumnType("int");
 
             builder.Property(e => e.Surname)
                 .IsRequired()
@@ -53,6 +53,8 @@ namespace SM.Infraestructure.Data.Configurations
                 .HasForeignKey(d => d.IdUser)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Teacher_User");
+
+
 
 
         }

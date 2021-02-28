@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SM.Api.Response;
 using SM.Core.DTOs;
@@ -11,7 +12,7 @@ using System.Net;
 using System.Threading.Tasks;
 namespace SM.Api.Controllers
 {
-    //// [Authorize]
+    //// 
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -46,7 +47,7 @@ namespace SM.Api.Controllers
             var user = await _user.GetUser(id);
             var userDto = _mapper.Map<UserDto>(user);
             var response = new ApiResponse<UserDto>(userDto);
-            return Ok(response); 
+            return Ok(userDto); 
         }
         [HttpPost]
         public async Task<IActionResult> NewUser(UserDto userDto)
@@ -60,6 +61,7 @@ namespace SM.Api.Controllers
             return Ok(response);
 
         }
+        [Authorize]
         [HttpPut]
         public async Task<IActionResult> Update(int id, UserDto userDto)
         {
@@ -69,6 +71,7 @@ namespace SM.Api.Controllers
             var response = new ApiResponse<bool>(result);
             return Ok(response);
         }
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

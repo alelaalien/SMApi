@@ -72,7 +72,7 @@ namespace SM.Api.Controllers
             var response = new ApiResponse<bool>(result);
             return Ok(response);
         }
-        [Route("deleteall/")]
+        [Route("deleteall")]
         [HttpDelete]
         public async Task<IActionResult> DeleteAll([FromQuery] TeacherQueryFilters filters)
         {

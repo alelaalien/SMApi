@@ -6,7 +6,7 @@ namespace SM.Core.Entities
     {
         public Subjet()
         {
-            Event = new HashSet<Event>();
+            Event = new HashSet<Event>(); 
         }
 
  
@@ -17,6 +17,6 @@ namespace SM.Core.Entities
   
 
         public virtual User IdUserNavigation { get; set; }
-        public virtual ICollection<Event> Event { get; set; }
+        public virtual ICollection<Event> Event { get; set; } 
     }
 }

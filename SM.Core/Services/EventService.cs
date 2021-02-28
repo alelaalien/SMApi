@@ -39,7 +39,7 @@ namespace SM.Core.Services
             if (filters.Date != null) { events = events.Where(x => x.Date.ToShortDateString() == filters.Date?.ToShortDateString()); }
             if (filters.IdUser != null) { events = events.Where(x => x.IdUser == filters.IdUser); }
             if (filters.Title != null) { events = events.Where(x => x.Title.ToLower() == filters.Title.ToLower()); }
-            if (filters.TypeOf != null) { events = events.Where(x => x.TypeOf == filters.TypeOf); }
+            if (filters.TypeId != null) { events = events.Where(x => x.TypeId == filters.TypeId); }
             if (filters.Active != null) { events = events.Where(x => x.Active == filters.Active); }
             if (filters.Priority != null) { events = events.Where(x => x.Priority == filters.Priority); }
             if (filters.Notes != null) { events = events.Where(x => x.Notes.ToLower().Contains(filters.Notes.ToLower())); }
@@ -90,11 +90,28 @@ namespace SM.Core.Services
         {
             var events = _eveR.EventRepository.GetAll();
 
-            if (filters.IdUser != null)
+            if (filters.IdUser != null && filters.IdSubjet !=null)
             {
 
 
                 events = events.Where(x => x.IdUser == filters.IdUser);
+                events = events.Where(x => x.IdSubjet == filters.IdSubjet);
+
+                await _eveR.EventRepository.DeleteAll(events);
+
+            }
+            if (filters.IdUser != null)
+            {
+
+                events = events.Where(x => x.IdUser == filters.IdUser);
+             
+                await _eveR.EventRepository.DeleteAll(events);
+
+            }
+            if (filters.TypeId != null)
+            {
+
+                events = events.Where(x => x.TypeId == filters.TypeId);
 
                 await _eveR.EventRepository.DeleteAll(events);
 

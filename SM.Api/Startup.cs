@@ -12,13 +12,12 @@ using Microsoft.OpenApi.Models;
 using SM.Core.Interfaces;
 using SM.Core.Services;
 using SM.Infraestructure.Data;
-using SM.Infraestructure.Filters;
 using SM.Infraestructure.Interfaces;
 using SM.Infraestructure.Options;
 using SM.Infraestructure.Repositories;
 using SM.Infraestructure.Services;
 using System;
-using System.Text; 
+using System.Text;
 
 namespace SM.Api
 {
@@ -43,13 +42,16 @@ namespace SM.Api
             services.AddDbContext<SMContext>(options=> options.UseSqlServer("Server=DESKTOP-OAU6F0C\\SQLEXPRESS; Database=SM; User Id=gttt; Password=gttt"));
             services.Configure<PasswordOptions>(Configuration.GetSection("PasswordOptions"));
             services.AddSingleton<IPasswordHasher, PasswordService>();
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
+             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ITypeOfService, TypeOfService>();
+            services.AddTransient<IDictatesService, DictatesService>(); 
             services.AddTransient<IEventService, EventService>();
             services.AddTransient<ISubjetService, SubjetService>();
             services.AddTransient<ITeacherService, TeacherService>();
             services.AddTransient<ISecurityService, SecurityService>();
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+           
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

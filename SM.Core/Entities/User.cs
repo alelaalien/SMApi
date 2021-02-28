@@ -9,6 +9,7 @@ namespace SM.Core.Entities
             Subjet = new HashSet<Subjet>();
             Teacher = new HashSet<Teacher>();
             Event = new HashSet<Event>();
+            TypeOf = new HashSet<TypeOf>();
         }
 
 
@@ -19,5 +20,6 @@ namespace SM.Core.Entities
         public virtual ICollection<Subjet> Subjet { get; set; }
         public virtual ICollection<Teacher> Teacher { get; set; }
         public virtual ICollection<Event> Event { get; set; }
+        public virtual ICollection<TypeOf> TypeOf { get; set; }
     }
 }

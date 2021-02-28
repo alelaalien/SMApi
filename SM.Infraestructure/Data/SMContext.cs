@@ -19,6 +19,8 @@ namespace SM.Infraestructure.Data
         public virtual DbSet<Subjet> Subjet { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<TypeOf> TypeOf { get; set; }
+        public virtual DbSet<Dictates> Dictates { get; set; }
         public virtual DbSet<Security> Securities { get; set; }
 
 

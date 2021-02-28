@@ -47,15 +47,16 @@ namespace SM.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(CommonLogin login)
         {
-            //if it is a valid user
+             
             var validation = await UserComprobation(login);
             if (validation.Item1)
             {
                 User user = validation.Item2;
-                var token = UserToken(user);
-                return Ok(user);
-           //     var token = UserToken(validation.Item2);
-           //     return Ok(new { token });
+                
+                //var token = UserToken(user);
+             // return Ok(user);
+                var token = UserToken(validation.Item2);
+                return Ok(new { token, user.Id });
             }
 
             return NotFound();

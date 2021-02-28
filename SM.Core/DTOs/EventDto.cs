@@ -7,7 +7,7 @@ namespace SM.Core.DTOs
         public int Id { get; set; }
         public int IdSubjet { get; set; }
         public DateTime Date { get; set; }
-        public int TypeOf { get; set; }
+        public int TypeId { get; set; }
         public int IdUser { get; set; }
         public string Title { get; set; }
         public string Notes { get; set; }

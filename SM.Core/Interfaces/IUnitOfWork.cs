@@ -9,9 +9,12 @@ namespace SM.Core.Interfaces
         IRepository<Event> EventRepository { get; }
         IRepository<User> UserRepository { get; }
         IRepository<Teacher> TeacherRepository { get; }
+        IRepository<TypeOf> TypeRepository { get; }
         IRepository<Subjet> SubjetRepository { get; }
-        ISecurityRepository SecurityRepository { get; }
+        IRepository<Dictates> DictatesRepository { get; }
+        ISecurityRepository SecurityRepository { get; } 
         IUserRepository UserRepositoryLogin { get; }
+ 
         void SaveChanges();
         Task SaveChangesAsync();
 

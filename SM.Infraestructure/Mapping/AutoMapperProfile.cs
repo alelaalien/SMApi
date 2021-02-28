@@ -20,6 +20,9 @@ namespace SM.Infraestructure.Mapping
             CreateMap<SubjetDto, Subjet>();
             CreateMap<Subjet, SubjetDto>();
 
+            CreateMap<TypeOfDto, TypeOf>();
+            CreateMap<TypeOf, TypeOfDto>();
+
             CreateMap<SecurityDto, Security>();
             CreateMap<Security, SecurityDto>();//reversemap
         }

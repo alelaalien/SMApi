@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 
 namespace SM.Core.Interfaces
 {
-    public interface IEventRepository
+    public interface ITypeOfRespository
     {
-        Task<IEnumerable<Event>> GetEvents();
-        Task<Event> GetEvent(int id);
-        Task NewEvent(Event _event);
-        Task<bool> Update(Event _event);
+        Task<IEnumerable<TypeOf>> GetTypes();
+        Task<TypeOf> GetType(int id);
+        Task NewType(TypeOf _type);
+        Task<bool> Update(TypeOf _type);
         Task<bool> Delete(int id);
         Task<bool> DeleteAll(int id);
     }

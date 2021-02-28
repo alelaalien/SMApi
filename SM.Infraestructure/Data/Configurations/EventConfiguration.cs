@@ -20,7 +20,8 @@ namespace SM.Infraestructure.Data.Configurations
 
             builder.Property(e => e.IdSubjet).HasColumnName("idSubjet");
 
-            builder.Property(e => e.IdUser).HasColumnName("idUser");
+            builder.Property(e => e.IdUser)
+                .HasColumnName("idUser");
 
             builder.Property(e => e.Notes)
                 .IsRequired()
@@ -34,7 +35,8 @@ namespace SM.Infraestructure.Data.Configurations
                 .HasColumnName("title")
                 .HasColumnType("text");
 
-            builder.Property(e => e.TypeOf).HasColumnName("typeOf");
+            builder.Property(e => e.TypeId)
+                .HasColumnName("typeId");
 
             builder.HasOne(d => d.IdSubjetNavigation)
                 .WithMany(p => p.Event)
@@ -47,7 +49,13 @@ namespace SM.Infraestructure.Data.Configurations
                 .HasForeignKey(d => d.IdUser)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Event_User");
-     
+
+            builder.HasOne(d => d.IdTypeOfNavigation)
+                .WithMany(p => p.Event)
+                .HasForeignKey(d => d.TypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Event_TypeOf");
+
         }
     }
 }

@@ -36,7 +36,8 @@ namespace SM.Core.Services
             if (filters.Name != null) { teachers = teachers.Where(x => x.Name.ToLower() == filters.Name.ToLower()); }
             if (filters.Surname != null) { teachers = teachers.Where(x => x.Surname.ToLower() == filters.Surname.ToLower()); }
             if (filters.Nick != null) { teachers = teachers.Where(x => x.Nick.ToLower() == filters.Nick.ToLower()); }
-            if (filters.Celephone != null) { teachers = teachers.Where(x => x.Celephone == filters.Celephone); }
+            if (filters.Subjet != null) { teachers = teachers.Where(x => x.Subjet == filters.Subjet); }
+            if (filters.Celphone != null) { teachers = teachers.Where(x => x.Celphone == filters.Celphone); }
             if (filters.Email != null) { teachers = teachers.Where(x => x.Email.ToLower() == filters.Email.ToLower()); }
 
             return teachers;
@@ -56,14 +57,14 @@ namespace SM.Core.Services
         }
         public async Task<bool> DeleteAll(TeacherQueryFilters filters)
         {
-            var teachers = _teachR.SubjetRepository.GetAll();
+            var teachers = _teachR.TeacherRepository.GetAll();
 
             if (filters.IdUser != null)
             {
 
                 teachers = teachers.Where(x => x.IdUser == filters.IdUser);
 
-                await _teachR.SubjetRepository.DeleteAll(teachers);
+                await _teachR.TeacherRepository.DeleteAll(teachers);
 
             }
             await _teachR.SaveChangesAsync();

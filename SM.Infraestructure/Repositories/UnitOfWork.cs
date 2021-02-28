@@ -11,9 +11,12 @@ namespace SM.Infraestructure.Repositories
         private readonly IRepository<Event> _eveR;
         private readonly IRepository<Teacher> _teachR;
         private readonly IRepository<Subjet> _subR;
+        private readonly IRepository<Dictates> _dicR;
         private readonly IRepository<User> _useR;
         private readonly IUserRepository _useRL;
         private readonly ISecurityRepository _secR;
+        private readonly IRepository<TypeOf> _typeR; 
+
 
         public UnitOfWork(SMContext sMContext)
         {
@@ -28,8 +31,12 @@ namespace SM.Infraestructure.Repositories
 
         public IRepository<Subjet> SubjetRepository => _subR ?? new BaseRepository<Subjet>(_context);
 
+        public IRepository<TypeOf> TypeRepository => _typeR ?? new BaseRepository<TypeOf>(_context);
+
         public ISecurityRepository  SecurityRepository => _secR ?? new SecurityRepository(_context);
+
         public IUserRepository UserRepositoryLogin => _useRL ?? new UserRepository (_context);
+        public IRepository<Dictates> DictatesRepository => _dicR ?? new BaseRepository<Dictates>(_context);
 
         public void Dispose()
         {
