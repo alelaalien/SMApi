@@ -52,8 +52,19 @@ using System.Threading.Tasks;
 
     public async Task NewDictates(Dictates _dictates)
         {
+        var dictates = unit.DictatesRepository.GetAll();
+        
+dictates = dictates.Where(x => x.TeacherId == _dictates.TeacherId);
+ dictates = dictates.Where(x => x.SubjetId == _dictates.SubjetId);
+        int l =dictates.Count();
+        int c = 0;
+        if (l==c)
+        {
         await unit.DictatesRepository.Add(_dictates);
         await unit.SaveChangesAsync();
+        }
+
+       
     }
      
 }

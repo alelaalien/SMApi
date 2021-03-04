@@ -7,7 +7,6 @@
         public string Surname { get; set; }
         public string Nick { get; set; }
         public int? IdUser { get; set; }
-        public int? Subjet { get; set; }
         public int? Celphone { get; set; }
         public string Email { get; set; }
     }

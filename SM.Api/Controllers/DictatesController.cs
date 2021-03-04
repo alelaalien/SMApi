@@ -12,9 +12,11 @@ namespace SM.Api.Controllers
     public class DictatesController : ControllerBase
     {
         private readonly IDictatesService _ds;
-        public DictatesController(IDictatesService ds)
+        private readonly ISubjetService _ss;
+        public DictatesController(IDictatesService ds, ISubjetService ss)
         {
             _ds = ds;
+            _ss = ss;
         }
         [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.OK)]
@@ -22,8 +24,10 @@ namespace SM.Api.Controllers
         public IActionResult GetDictates([FromQuery] DictatesQueryFilters filters)
         {
             var dic = _ds.GetDictates(filters);
+
             return Ok(dic);
         }
+ 
         [HttpPost]
         public async Task<IActionResult> NewDictates(Dictates d)
         {            

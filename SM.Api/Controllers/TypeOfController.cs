@@ -64,7 +64,7 @@ namespace SM.Api.Controllers
             }
             [HttpDelete("{id}")]
             public async Task<IActionResult> Delete(int id)
-            {
+             {
 
                 var result = await _typeS.Delete(id);
                 var response = new ApiResponse<bool>(result);

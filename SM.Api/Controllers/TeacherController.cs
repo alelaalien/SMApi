@@ -52,7 +52,7 @@ namespace SM.Api.Controllers
             await _teacher.NewTeacher(t);
             teacherDto = _mapper.Map<TeacherDto>(t);
             var response = new ApiResponse<TeacherDto>(teacherDto);
-            return Ok(response);
+            return Ok(teacherDto);
         }
         [HttpPut]
         public async Task<IActionResult> Update(int id, TeacherDto teacherDto)

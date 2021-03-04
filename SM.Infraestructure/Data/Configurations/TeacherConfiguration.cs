@@ -33,12 +33,7 @@ namespace SM.Infraestructure.Data.Configurations
                 .IsRequired()
                 .HasColumnName("nick")
                 .HasColumnType("text");
- 
 
-            builder.Property(e => e.Subjet)
-                .IsRequired()
-                .HasColumnName("subjet")
-                .HasColumnType("int");
 
             builder.Property(e => e.Surname)
                 .IsRequired()

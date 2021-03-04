@@ -58,6 +58,7 @@ namespace SM.Core.Services
 
             return subjets;
         }
+ 
 
         public async Task NewSubjet(Subjet subjet)
         {

@@ -4,7 +4,6 @@
     {
         public int Id { get; set; }
         public int IdUser { get; set; }
-        public int Subjet { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Nick { get; set; }
