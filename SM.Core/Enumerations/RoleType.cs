@@ -2,6 +2,7 @@
 {
     public enum RoleType
     {
+        // comment
         Administrator,
         Consumer
     }
